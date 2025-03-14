@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: rgba(245, 245, 245, 0.503);
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.invisible_wrapper {
+  opacity: 0;
+}
+
+.visible_wrapper {
+  animation: fade_in 2s ease-in-out;
+}
+@keyframes fade_in {
+  from {
+    filter: blur(1px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.unclear {
+  opacity: 0.1;
+  transform: scale(0.9);
+  transition: 0.5s;
+}
+.clear {
+  transform: scale(1);
+  animation: clear 0.5s ease-in-out;
+}
+@keyframes clear {
+  from {
+    opacity: 0.1;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.stagger-0,
+.stagger-1 {
+  opacity: 0;
+  animation: stagger 1s ease-out forwards;
+}
+.stagger-1 {
+  animation-delay: 0.4s;
+}
+@keyframes stagger {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
