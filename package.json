@@ -1,27 +1,29 @@
 {
   "name": "react-load-on-view",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "types": "index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./index.d.ts"
     },
     "./useElementObserver": {
       "import": "./dist/useElementObserver.es.js",
       "require": "./dist/useElementObserver.js",
-      "types": "./dist/useElementObserver.d.ts"
+      "types": "./index.d.ts"
     },
-    "./useLazyLoadData": {
-      "import": "./dist/useLazyLoadData.es.js",
-      "require": "./dist/useLazyLoadData.js",
-      "types": "./dist/useLazyLoadData.d.ts"
+    "./useLazyLoadAssets": {
+      "import": "./dist/useLazyLoadAssets.es.js",
+      "require": "./dist/useLazyLoadAssets.js",
+      "types": "./index.d.ts"
     }
   },
   "scripts": {

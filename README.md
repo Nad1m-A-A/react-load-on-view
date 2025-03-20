@@ -142,8 +142,6 @@ const { data, error, loading } = useLazyLoadAssets(paths, inView);
 | `files`   | string[] | Array of file paths to load    |
 | `inView`  | boolean  | Whether the element is in view |
 
-[Previous sections remain the same...]
-
 ## Animation Control
 
 ### Default vs Special Animations
@@ -238,3 +236,40 @@ MIT
 ## Author
 
 Nad1m-A-A
+
+## TypeScript Support
+
+This package includes TypeScript declarations. You can use it in TypeScript projects without any additional setup:
+
+```tsx
+import { withViewObserver } from "react-load-on-view";
+
+interface MyComponentProps {
+  title: string;
+  // Your props here
+}
+
+// TypeScript will understand the additional props from lazy loading
+function MyComponent({
+  title,
+  data,
+  loading,
+  error,
+}: MyComponentProps & { data?: any; loading?: boolean; error?: string }) {
+  return <div>{title}</div>;
+}
+
+const EnhancedComponent = withViewObserver(MyComponent, {
+  lazyLoad: true,
+  paths: ["/path/to/data.json"],
+});
+
+// TypeScript will understand this prop is available
+<EnhancedComponent title="Hello" special_animation="fade-in" />;
+```
+
+The package exports the following types:
+
+- `WithViewObserverOptions` - Options for the HOC
+- `UseElementObserverOptions` - Options for the observer hook
+- `LazyLoadProps` - Extra props added to components with lazyLoad enabled
