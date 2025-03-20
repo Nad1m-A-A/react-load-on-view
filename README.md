@@ -4,6 +4,9 @@ React Higher-Order Component (HOC) that tracks UI elements to dynamically fetch 
 
 [![GitHub](https://img.shields.io/badge/GitHub-View%20on%20GitHub-blue?logo=github)](https://github.com/Nad1m-A-A/react-load-on-view)
 [![Demo](https://img.shields.io/badge/Demo-View%20Demo-green?logo=react)](https://github.com/Nad1m-A-A/react-load-on-view/tree/main/react-load-on-view-application)
+[![Vite](https://img.shields.io/badge/Requires-Vite-yellow)](https://vitejs.dev/)
+
+> **Important**: This package is designed specifically for Vite-based projects and requires certain configurations. See the [Vite Configuration](#important-vite-specific-configuration) section.
 
 ## Features
 
@@ -273,3 +276,35 @@ The package exports the following types:
 - `WithViewObserverOptions` - Options for the HOC
 - `UseElementObserverOptions` - Options for the observer hook
 - `LazyLoadProps` - Extra props added to components with lazyLoad enabled
+
+## Important: Vite-Specific Configuration
+
+This package is specifically designed for projects using **Vite** as the build tool.
+
+### Required Vite Configuration
+
+To ensure all assets are properly loaded, you must modify your `vite.config.js` to disable asset inlining:
+
+```js
+// vite.config.js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    assetsInlineLimit: 0 // This ensures all assets are processed as files
+  }
+});
+```
+
+### Asset Path Requirement
+
+The package expects dynamically imported assets to be located within the `/src/assets/` directory:
+
+```jsx
+// This glob pattern is used internally
+const modules = import.meta.glob("/src/assets/**/*");
+```
+
+Therefore, all files referenced in `paths` must be placed in this directory structure:

@@ -1,5 +1,5 @@
 import { lazy } from "react";
-const Card = lazy(() => import("../Card"));
+import Card from "../Card";
 import Section from "../Section";
 
 function SectionC({ data }) {
